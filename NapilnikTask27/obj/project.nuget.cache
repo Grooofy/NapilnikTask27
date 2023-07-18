@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "2oWI9DU4cO3nK8f5Q8ptv8I3UL0lyCSqolinSnz5uLjzIWkS3It6XM9pBHQzvI52zDMv+SXoOuawIrvNbx4BVw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Teacher\\source\\repos\\NapilnikTask27\\NapilnikTask27\\NapilnikTask27.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Teacher\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.9\\microsoft.data.sqlite.core.7.0.9.nupkg.sha512",
+    "C:\\Users\\Teacher\\.nuget\\packages\\sqlitepclraw.core\\2.1.4\\sqlitepclraw.core.2.1.4.nupkg.sha512",
+    "C:\\Users\\Teacher\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512",
+    "C:\\Users\\Teacher\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+  ],
+  "logs": []
+}
