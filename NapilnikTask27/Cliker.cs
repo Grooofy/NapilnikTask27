@@ -1,6 +1,6 @@
-﻿using Microsoft.Data.Sqlite;
-using System;
+﻿using System;
 using System.Data;
+using System.Data.SQLite;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -21,9 +21,10 @@ namespace NapilnikTask27
             else
             {
                 string rawData = _passportTextbox.ToString().Trim().Replace(" ", string.Empty);
+
                 if (rawData.Length < 10)
                 {
-                    this._textResult = "Неверный формат серии или номера паспорта";
+                    _textResult = "Неверный формат серии или номера паспорта";
                 }
                 else
                 {                    
@@ -31,24 +32,24 @@ namespace NapilnikTask27
                     string connectionString = string.Format("Data Source=" + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\db.sqlite");
                     try
                     {
-                        SqliteConnection connection = new SqliteConnection(connectionString);
+                        SQLiteConnection connection = new SQLiteConnection(connectionString);
                         connection.Open();
-                        SQLiteDataAdapter sqLiteDataAdapter = new SQLiteDataAdapter(new SqliteCommand(commandText, connection));
+                        SQLiteDataAdapter sqLiteDataAdapter = new SQLiteDataAdapter(new SQLiteCommand(commandText, connection));
                         DataTable dataTable1 = new DataTable();
                         DataTable dataTable2 = dataTable1;
                         sqLiteDataAdapter.Fill(dataTable2);
                         if (dataTable1.Rows.Count > 0)
                         {
                             if (Convert.ToBoolean(dataTable1.Rows[0].ItemArray[1]))
-                                this._textResult = "По паспорту «" + this._passportTextbox.ToString() + "» доступ к бюллетеню на дистанционном электронном голосовании ПРЕДОСТАВЛЕН";
+                                _textResult = "По паспорту «" + _passportTextbox.ToString() + "» доступ к бюллетеню на дистанционном электронном голосовании ПРЕДОСТАВЛЕН";
                             else
-                                this._textResult = "По паспорту «" + this._passportTextbox.ToString() + "» доступ к бюллетеню на дистанционном электронном голосовании НЕ ПРЕДОСТАВЛЯЛСЯ";
+                                _textResult = "По паспорту «" + _passportTextbox.ToString() + "» доступ к бюллетеню на дистанционном электронном голосовании НЕ ПРЕДОСТАВЛЯЛСЯ";
                         }
                         else
-                            this._textResult = "Паспорт «" + this._passportTextbox.ToString() + "» в списке участников дистанционного голосования НЕ НАЙДЕН";
+                            _textResult = "Паспорт «" + _passportTextbox.ToString() + "» в списке участников дистанционного голосования НЕ НАЙДЕН";
                         connection.Close();
                     }
-                    catch (SqliteException ex)
+                    catch (SQLiteException ex)
                     {
                         if (ex.ErrorCode != 1)
                             return;
